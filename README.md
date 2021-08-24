@@ -1,6 +1,8 @@
 
 ![bbb-install.sh](images/bbb-install.png?raw=true "bbb-install.sh")
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
 # bbb-install
 
 To help you set up a BigBlueButton server 2.3 server (or upgrade from an earlier version of 2.3), `bbb-install.sh` is a shell script that automates the installation/upgrade steps  (view the [source](https://github.com/bigbluebutton/bbb-install/blob/master/bbb-install.sh) to see all the details).   Depending on your server's internet connection, `bbb-install.sh` can fully install and configure your BigBlueButton server for production in under 30 minutes.
@@ -14,8 +16,8 @@ wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | bash -s -- -w -a -v 
 This command pulls down the latest version of `bbb-install.sh`, sends it to the Bash shell interpreter, and installs BigBlueButton using the parameters provided:
 
   * `-w` installs the uncomplicated firewall (UFW) to restrict access to TCP/IP ports 22, 80, and 443, and UDP ports in range 16384-32768,
-  * `-a` installs the API demos (making it easy to do a few quick tests on the server), 
-  * `-v bionic-23` installs the latest build of BigBlueButton 2.3.x, 
+  * `-a` installs the API demos (making it easy to do a few quick tests on the server),
+  * `-v bionic-23` installs the latest build of BigBlueButton 2.3.x,
   * `-s` sets the server's hostname to be `bbb.example.com`, and
   * `-e` provides an email address for Let's Encrypt to generate a valid SSL certificate for the host.
 
@@ -349,7 +351,7 @@ The server should have the following additional ports available:
 
 Before running `bbb-install.sh` to setup the TURN server (which installs and configures the `coturn` package), you need
 
-  * A fully qualified domain name (FQDN) with 
+  * A fully qualified domain name (FQDN) with
     * an A record that resolves to the server's public IPV4 address
     * an AAAA record that resolves to the server's public IPV6 address
   * An email address for Let's Encrypt
@@ -375,7 +377,7 @@ will do the following
     * Configure logging to `/var/log/turnserver/turnserver.log`
     * Add a logrotate configuration to keep the logs for 7 days
   * Setup a SSL certificate using Let's Encrypt
-    * Add a deploy hook for Let's Encrypt to have coturn reload the certificates upon renewal 
+    * Add a deploy hook for Let's Encrypt to have coturn reload the certificates upon renewal
 
 With a SSL certificate in place, coturn can relay access to your BigBlueButton server via TCP/IP on port 443.  This means if a user is behind a restrictive firewall that blocks all outgoing UDP connections, the TURN server can accept connections from the user via TCP/IP on port 443 and relay the data to your BigBlueButton server via UDP.
 
