@@ -6,4 +6,5 @@ ports:
   onOpen: open-preview
 
 tasks:
-  - init: bbb-conf --check
+  - init: sudo ./bbb-install.sh -s -- -w -a -v bionic-23 -s $GITPOD_WORKSPACE_URL -e admin@example.com
+    command: bbb-conf --check
